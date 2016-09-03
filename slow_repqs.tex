@@ -1,0 +1,138 @@
+\documentclass[12pt]{article}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{amssymb,amsfonts,amsmath,amscd,mathtext,cite,enumerate,float}
+\usepackage{graphicx}
+\usepackage{indentfirst}
+\usepackage{xcolor}
+\usepackage{epstopdf}
+\usepackage{bm}
+
+%-----------------------------
+%Geometry
+\oddsidemargin = 0pt
+\textwidth = 480pt
+\headsep = 0pt
+\headheight = 0pt
+\topmargin = 0pt
+\textheight = 650pt
+
+\begin{document}
+\title{How to construct repressilator prefactor reducted model, with QS feedback and with dimer degradation}
+\maketitle
+%\section*{}
+\begin{align}
+	\label{cmM1}
+	\frac{dM_{1}}{dt} & =  r_m  G_{1} - d_m  M_{1} \\
+	\label{cmM2}
+	\frac{dM_{2}}{dt} & =  r_m  G_{2} - d_m  M_{2} \\
+	\label{cmM3}
+	\frac{dM_{3}}{dt} & =  r_m  \left(G_{3} + \omega  (g_{t} - G_{3I})\right) - d_m  M_{3} \\
+	\label{cmMI}
+	\frac{dM_{I}}{dt} & =  r_m^{I}  G_{I}  - d_m  M_{I} \\
+	\notag\\
+	\label{cmP1}
+	\frac{dP_{1}}{dt} & =  r_p  M_{1} + 2 k_{ud} D_{1} - 2 k_{d} P_{1}^2 -d_p  P_{1} \\
+	\label{cmP2}
+	\frac{dP_{2}}{dt} & =  r_p  M_{2} + 2 k_{ud} D_{2} - 2 k_{d} P_{2}^2 -d_p  P_{2} \\
+	\label{cmP3}
+	\frac{dP_{3}}{dt} & =  r_p  M_{3} + 2 k_{ud} D_{3} - 2 k_{d} P_{3}^2 -d_p  P_{3} \\
+	\label{cmPI}
+	\frac{dP_{I}}{dt} & =  r_p  M_{I} -d_p  P_{I} \\
+	\notag\\
+	\label{cmS}
+	\frac{dS}{dt} & = r_s P_{I} - (d_s + \eta) S + k_{ua} R - k_{a} p_{R} S \\
+	\label{cmR}
+	\frac{dR}{dt} & = - k_{ua} R + k_{a} p_{R} S - 2 k_{Rd} R^2 + 2 k_{Rud} D_{R} \\
+	\notag
+	\end{align}
+	\begin{align}
+	\label{cmD1}
+	\frac{dD_{1}}{dt} & = k_{d} P_{1}^2 - k_{ud} D_{1} - k_{r} D_{1} G_{2} + k_{ur}(g_{t} - G_{2}) - k_{r} D_{1} G_{I} + k_{ur}(g_{t} - G_{I}) - \delta d_p D_{1}\\
+	\label{cmD2}
+	\frac{dD_{2}}{dt} & = k_{d} P_{2}^2 - k_{ud} D_{2} - k_{r} D_{2} G_{3} + k_{ur}(g_{t} - G_{3}) - \delta d_p D_{2}\\
+	\label{cmD3}
+	\frac{dD_{3}}{dt} & = k_{d} P_{3}^2 - k_{ud} D_{3} - k_{r} D_{3} G_{1} + k_{ur}(g_{t} - G_{1}) - \delta d_p D_{3}\\
+	\label{cmDR}
+	\frac{dD_{R}}{dt} & = k_{Rd} R^2 - k_{Rud} D_{R} - k_{Rr} G_{3I} D_{aiR} + k_{Rur}(g_{t} - G_{3I}) - \delta d_p D_{R}\\
+	\notag\\
+	\label{cmG1}
+	\frac{dG_{1}}{dt} & = - k_{r} G_{1} D_{3} + k_{ur}(g_{t} - G_{1}) \\
+	\label{cmG2}
+	\frac{dG_{2}}{dt} & = - k_{r} G_{2} D_{1} + k_{ur}(g_{t} - G_{2}) \\
+	\label{cmGI}
+	\frac{dG_{I}}{dt} & = - k_{r} G_{I} D_{1} + k_{ur}(g_{t} - G_{I}) \\
+	\label{cmG3}
+	\frac{dG_{3}}{dt} & = - k_{r} G_{3} D_{2} + k_{ur}(g_{t} - G_{3}) \\
+	\label{cmG3I}
+	\frac{dG_{3I}}{dt} & = - k_{Rr} G_{3I} D_{R} + k_{Rur}(g_{t} - G_{3I})
+\end{align}
+
+Reactions (\ref{cmD1}) - (\ref{cmDR}), (\ref{cmG1}) - (\ref{cmG3I}) and (\ref{cmR}) is assumed to be fast. Then we can write:
+\begin{align}
+	\label{vcDiDim}
+	D_{i} &= \frac{k_d P_i^2}{\delta d_p + k_{ud}}, \ i = \overline{1,3} \\
+	\label{vcGiDim}
+	G_{i} & = \frac{k_{ur} \cdot g_t}{\frac{k_r \cdot k_d}{\delta \cdot d_p + k_{ud}} P_k^2 + k_{ur}}\\
+	\label{vcRDim}
+	R &= \frac{k_a p_R S}{k_{ua}} \\
+	\label{vcDRDim}
+	D_{R} &= \frac{k_{Rd} R^2}{\delta d_p + k_{Rud}} \\
+	\label{vcDR}
+	G_{3I} &= \frac{k_{Rur} g_t}{\frac{k_{Rr} k_{Rd}}{\delta d_p + k_{Rud}} R^2 + k_{Rur}}
+\end{align}
+
+denote $\sigma = \frac{ k_d}{\delta \cdot d_p + k_{ud}}$, $ \kappa = k_r / k_{ur} $, $\kappa_{a} = \frac{k_a p_R}{k_{ua}}$, $\sigma_R = \frac{k_{Rd}}{\delta d_p + k_{Rud}}$ and $\kappa_R = \frac{k_{Rr}}{k_{Rur}}$. Then
+
+\begin{align}
+	D_i &= \sigma P_i^2\\
+	G_i &= \frac{ g_t}{\sigma\kappa P_k^2 + 1} \\
+	R &= \kappa_a S \\
+	D_R &= \sigma_R \kappa_a^2 S^2 \\
+	G_{3I} &= \frac{g_t}{\sigma_R \kappa_R \kappa_a^2 S^2 + 1}
+\end{align}
+
+For each gene from base repressilator ring consider total protein concentration $n_i$, as slow variable, also as slow variable we can write total AI(small molecule) concentration $n_s$.
+
+\begin{align}
+	n_i &= P_{i} + 2D_{i} + 2(g_t - G_{k}), \ i = 2,3, \ k = 3,1 \\
+	n_1 &= P_{1} + 2D_{1} + 2(g_t - G_{2}) + 2(g_t - G_{I}) \\
+	n_s &= S + R + 2D_{R} + 2(g_t - G_{3I})
+\end{align}
+
+Obviosly derivation of new variables is
+\begin{align}
+	\label{phDni}
+	\dot{n_i} &= r_p M_{i} - d_p P_{i} - \delta d_p D_{i}, \ i = \overline{1,3} \\
+	\label{phDns}
+	\dot{n_s} &= r_s P_{I} - (d_s + \eta) S - \delta d_p D_R
+\end{align}
+
+Since $\dfrac{d D_i}{d t} = \dfrac{dG_i}{dt} = \dfrac{dR}{dt} = 0$,
+\begin{align}
+	\label{rDni}
+	\dot{n_1} &= \dfrac{\partial n_1}{\partial P_1} \frac{dP_1}{dt} = \left(1 + 4\sigma P_1 + 8 g_t \kappa\sigma\frac{P_1}{(\sigma\kappa P_1^2 + 1)^2} \right)\frac{dP_1}{dt} = \Pi_1(P_1)\frac{dP_1}{dt} \\
+	\dot{n_i} &= \dfrac{\partial n_i}{\partial P_i} \frac{dP_i}{dt} = \left(1 + 4\sigma P_i + 4 g_t \kappa\sigma\frac{P_i}{(\sigma\kappa P_i^2 + 1)^2}\right)\frac{dP_i}{dt} = \Pi(P_i)\frac{dP_i}{dt} \\
+	&\text{for} \ i=2,3\\
+	\label{rDns}
+	\dot{n_s} &= \dfrac{\partial n_s}{\partial S} \frac{dS}{dt} = \left( (1+\kappa_a) + 4\sigma_R\kappa_a^2S + 4 g_t \sigma_R \kappa_R \kappa_a^2 \frac{S}{(\sigma_R \kappa_R \kappa_a^2 S^2 + 1)^2} \right) \frac{dS}{dt} = \Pi_{I}(S) \dfrac{dS}{dt}
+\end{align}
+
+Finaly we can construct ``true reducted`` model:
+
+\begin{align}
+	\frac{dM_{1}}{dt} & =  r_m  \frac{ g_t}{\sigma\kappa P_3^2 + 1} - d_m  M_{1} \\
+	\frac{dM_{2}}{dt} & =  r_m  \frac{ g_t}{\sigma\kappa P_1^2 + 1} - d_m  M_{2} \\
+	\dfrac{dM_{3}}{dt} & =  r_m  \left(\frac{ g_t}{\sigma\kappa P_2^2 + 1} + \omega  \left(g_{t} - \frac{g_t}{\sigma_R \kappa_R \kappa_a^2 S^2 + 1}\right)\right) - d_m  M_{3} \\
+	\frac{dM_{I}}{dt} & =  r_m^{I}  \frac{ g_t}{\sigma\kappa P_1^2 + 1}  - d_m  M_{I} \\
+	\notag \\
+	\dfrac{dP_1}{dt}\Pi_1(P_1) &= r_p M_{1} - d_p P_{1} - \delta d_p \sigma P_1^2 \\
+	\dfrac{dP_2}{dt}\Pi(P_2) &= r_p M_{2} - d_p P_{2} - \delta d_p \sigma P_2^2 \\
+	\dfrac{dP_3}{dt}\Pi(P_3) &= r_p M_{3} - d_p P_{3} - \delta d_p \sigma P_3^2 \\
+	\notag \\
+	\frac{dP_{I}}{dt} & =  r_p  M_{I} -d_p  P_{I} \\
+	\dfrac{dS}{dt} \Pi_{I}(S) &= r_s P_{I} - (d_s + \eta) S - \delta d_p \sigma_R \kappa_a^2 S^2
+\end{align}
+\end{document}
