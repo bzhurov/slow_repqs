@@ -3,7 +3,7 @@ print os.path.curdir
 
 config = {
             'name': 'repqs19reqs',
-            'cdir': '/Users/bzhurov/GitHub/slow_repqs/auto',
+            'cdir': '/data/projects/slow_repqs/auto',
             'branch': [
                 {'name': 'ss_rm0', 'sc': '.time', 'c': '.ss', 'icp': ['rm'], 'UZSTOP' : {1: 2.5}, 'n_start_repeat' : 200},
 #                {'name': 'ss_rm0', 'sp': 'UZ', 'sb': 'ss_omega0', 'c': '.ss', 'icp': ['rm'], 'UZSTOP' : {2: 2.5}},
