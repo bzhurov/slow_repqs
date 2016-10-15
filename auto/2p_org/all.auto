@@ -1,0 +1,41 @@
+##
+#Time integration
+tiCont = run(e = "repqs19reqs", c = "repqs19reqs_sshblc.start")
+startNumPts = len(tiCont.getLabels())
+ssInit = tiCont(startNumPts)
+tiCont = []
+
+##
+#SS continuation
+ssCont = run(ssInit, c = "repqs19reqs_sshblc.ss", STOP = ['HB1'])
+
+##
+#LC continuation
+lcInit = ssCont('HB')[0]
+lcCont = run( lcInit, c = "repqs19reqs_sshblc.lc", STOP = ['LP1'] )
+
+##
+#Hopf bifurcation continuation
+hbInit = ssCont('HB1')
+ssCont = []
+hbCont = run(hbInit, c = "repqs19reqs_sshblc.hb")
+
+hbContB = run(hbInit, c = "repqs19reqs_sshblc.hb", DS = '-')
+
+##
+#LP bifurcation continuation
+lpInit = ssCont('LP1')
+ssCont = []
+lpCont = run(lpInit, c = "repqs19reqs_sshblc.lp")
+
+lpContB = run(lpInit, c = "repqs19reqs_sshblc.lp", DS = '-')
+
+##
+#LPC bifurcation continuation 
+lpInit = lcCont('LP')[0]
+lpStart = run(lpInit, c = "repqs19reqs_sshblc.lpc")
+lpCont = run(lpStart)
+
+lpContB = run(lpStart, DS = '-')
+
+
