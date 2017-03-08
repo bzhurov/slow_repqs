@@ -3,8 +3,7 @@ config = {
             'cdir': '/data/projects/slow_repqs/auto/',
             'resdir': '/data/projects/',
             'branch': [
-                {'name': 'ss_rm0', 'sc': '.time', 'c': '.ss', 'icp': ['rm'], 'UZSTOP' : {1: 0.007}, 'n_start_repeat' : 200},
-#                {'name': 'ss_rm0', 'sp': 'UZ', 'sb': 'ss_omega0', 'c': '.ss', 'icp': ['rm'], 'UZSTOP' : {2: 2.5}},
+                {'name': 'ss_rm0', 'sc': '.time', 'c': '.ss', 'icp': ['rm'], 'UZSTOP' : {1: 0.008}, 'n_start_repeat' : 200},
                 {'name': 'ss_omega1', 'sp': 'UZ', 'sb': 'ss_rm0', 'c': '.ss', 'icp': ['omega'], 'UZSTOP': {2: 0.0, 2: 100.0}, 'nmx': 500000},
                 {'name': 'lc0', 'sp': 'HB', 'sb': 'ss_omega1', 'c': '.lc', 'icp': ['omega', 11], 'UZSTOP' : {2: 10.0}, 'nmx': 500000}
                 ] 
@@ -44,9 +43,9 @@ model = {
 
         'rm': 0.0, 'rp': 0.1, 'dm': 0.0033, 'dp': 0.0033,
         'delta': 0.0, 'kr': 0.012, 'kur': 0.9, 'kd': 0.025, 'kud': 0.5, 'gt': 20,
-        'se': 0.0, 'omega': 0.0, 'rmI': 0.1,
+        'se': 0.0, 'omega': 0.0, 'rmI': 1.0,
         'rs': 0.0067, 'ds': 1.67e-5, 
         # 'eta': 0.5, 'kua': 0.1, 'ka': 0.05, 'kRd': 0.034, 'kRud': 0.034, 'kRr': 0.000833, 'kRur': 1.6667, 'pR': 5
-        'eta': 0.0067, 'kua': 0.166667, 'ka': 0.001667, 'kRd': 0.000833, 'kRud': 0.016667, 'kRr': 0.000833, 'kRur': 0.16667, 'pR': 50
+        'eta': 0.0067, 'kua': 0.166667, 'ka': 0.001667, 'kRd': 0.000833, 'kRud': 0.016667, 'kRr': 0.000833, 'kRur': 0.16667, 'pR': 10
 
     }

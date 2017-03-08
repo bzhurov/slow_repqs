@@ -1,0 +1,16 @@
+##
+#Time integration
+tiCont = run(e = "repqs19reqs", c = "repqs19reqs_sshblc.start")
+startNumPts = len(tiCont.getLabels())
+ssInit = tiCont(startNumPts)
+tiCont = []
+
+##
+#SS continuation
+ssCont = run(ssInit, c = "repqs19reqs_sshblc.ss", STOP = ['LP2'])
+
+##
+#LP bifurcation continuation
+lpInit = ssCont('LP2')
+ssCont = []
+lpCont = run(lpInit, c = "repqs19reqs_sshblc.lp")

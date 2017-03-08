@@ -1,0 +1,51 @@
+/usr/local/lib/python2.7/site-packages/widgetsnbextension/__init__.py:30: UserWarning: To use the jupyter-js-widgets nbextension, you'll need to update
+    the Jupyter notebook to version 4.2 or later.
+  the Jupyter notebook to version 4.2 or later.""")
+[I 18:29:07.097 NotebookApp] Serving notebooks from local directory: /data/projects/slow_repqs/auto/fig/fig_1
+[I 18:29:07.097 NotebookApp] 0 active kernels 
+[I 18:29:07.097 NotebookApp] The Jupyter Notebook is running at: http://localhost:8888/
+[I 18:29:07.097 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[I 18:29:32.595 NotebookApp] 302 GET / (::1) 0.85ms
+[W 18:29:44.977 NotebookApp] delete /Untitled1.ipynb
+[W 18:29:48.007 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js (::1) 10.33ms referer=http://localhost:8888/notebooks/Untitled.ipynb
+[I 18:29:48.261 NotebookApp] Kernel started: 83d6a897-015e-4f11-9caa-e5b1133b1ce7
+[I 18:31:48.134 NotebookApp] Saving file at /Untitled.ipynb
+[I 18:33:48.156 NotebookApp] Saving file at /Untitled.ipynb
+[I 18:35:48.148 NotebookApp] Saving file at /Untitled.ipynb
+[I 18:37:48.148 NotebookApp] Saving file at /Untitled.ipynb
+[I 18:39:48.161 NotebookApp] Saving file at /Untitled.ipynb
+[I 18:41:48.159 NotebookApp] Saving file at /Untitled.ipynb
+[I 18:43:48.162 NotebookApp] Saving file at /Untitled.ipynb
+[I 18:45:48.173 NotebookApp] Saving file at /Untitled.ipynb
+[I 18:47:48.176 NotebookApp] Saving file at /Untitled.ipynb
+[I 18:49:48.177 NotebookApp] Saving file at /Untitled.ipynb
+[I 18:53:48.185 NotebookApp] Saving file at /Untitled.ipynb
+[I 18:55:48.191 NotebookApp] Saving file at /Untitled.ipynb
+[I 18:57:48.197 NotebookApp] Saving file at /Untitled.ipynb
+[I 18:59:48.200 NotebookApp] Saving file at /Untitled.ipynb
+[I 19:03:48.211 NotebookApp] Saving file at /Untitled.ipynb
+[I 19:05:48.216 NotebookApp] Saving file at /Untitled.ipynb
+[I 19:07:48.219 NotebookApp] Saving file at /Untitled.ipynb
+[I 19:09:48.226 NotebookApp] Saving file at /Untitled.ipynb
+[I 19:11:48.336 NotebookApp] Saving file at /Untitled.ipynb
+[I 19:13:48.235 NotebookApp] Saving file at /Untitled.ipynb
+[I 19:17:48.242 NotebookApp] Saving file at /Untitled.ipynb
+[I 19:19:48.250 NotebookApp] Saving file at /Untitled.ipynb
+[I 19:21:48.252 NotebookApp] Saving file at /Untitled.ipynb
+[I 19:28:44.753 NotebookApp] Kernel restarted: 83d6a897-015e-4f11-9caa-e5b1133b1ce7
+[I 19:29:48.270 NotebookApp] Saving file at /Untitled.ipynb
+[I 19:29:48.837 NotebookApp] Kernel restarted: 83d6a897-015e-4f11-9caa-e5b1133b1ce7
+[W 19:29:48.843 NotebookApp] zmq message arrived on closed channel
+[I 19:31:49.970 NotebookApp] Saving file at /Untitled.ipynb
+[I 19:33:48.355 NotebookApp] Saving file at /Untitled.ipynb
+[I 19:33:53.955 NotebookApp] Kernel restarted: 83d6a897-015e-4f11-9caa-e5b1133b1ce7
+[I 19:34:33.237 NotebookApp] Kernel restarted: 83d6a897-015e-4f11-9caa-e5b1133b1ce7
+[I 19:35:25.106 NotebookApp] Kernel restarted: 83d6a897-015e-4f11-9caa-e5b1133b1ce7
+[I 19:35:48.803 NotebookApp] Saving file at /Untitled.ipynb
+[I 19:35:56.807 NotebookApp] Kernel restarted: 83d6a897-015e-4f11-9caa-e5b1133b1ce7
+[I 19:37:48.287 NotebookApp] Saving file at /Untitled.ipynb
+[I 19:39:48.288 NotebookApp] Saving file at /Untitled.ipynb
+[I 19:41:48.299 NotebookApp] Saving file at /Untitled.ipynb
+[I 20:17:48.408 NotebookApp] Saving file at /Untitled.ipynb
+[W 20:50:57.283 NotebookApp] WebSocket ping timeout after 90001 ms.
+[W 21:46:32.774 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js (::1) 4.01ms referer=http://localhost:8888/notebooks/Untitled.ipynb

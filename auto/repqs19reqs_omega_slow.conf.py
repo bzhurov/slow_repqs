@@ -1,14 +1,12 @@
-import os
-print os.path.curdir
-
 config = {
             'name': 'repqs19reqs',
-            'cdir': '/data/projects/slow_repqs/auto',
+            'cdir': '/data/lpi/repqs19reqs',
+            'resdir': '/data/lpi/calc',
             'branch': [
-                {'name': 'ss_rm0', 'sc': '.time', 'c': '.ss', 'icp': ['rm'], 'UZSTOP' : {1: 2.5}, 'n_start_repeat' : 200},
+                {'name': 'ss_rm0', 'sc': '.time', 'c': '.ss', 'icp': ['rm'], 'UZSTOP' : {1: 0.04}, 'n_start_repeat' : 200},
 #                {'name': 'ss_rm0', 'sp': 'UZ', 'sb': 'ss_omega0', 'c': '.ss', 'icp': ['rm'], 'UZSTOP' : {2: 2.5}},
-                {'name': 'ss_omega1', 'sp': 'UZ', 'sb': 'ss_rm0', 'c': '.ss', 'DS': '-', 'icp': ['omega'], 'UZSTOP' : {1: 0.0}},
-                {'name': 'lc0', 'sp': 'HB', 'sb': 'ss_omega1', 'c': '.lc', 'icp': ['omega', 11], 'UZSTOP' : {2: 10.0}}
+                {'name': 'ss_omega1', 'sp': 'UZ', 'sb': 'ss_rm0', 'c': '.ss', 'icp': ['omega'], 'UZSTOP': {2: 0.0, 2: 100.0}, 'nmx': 500000},
+                {'name': 'lc0', 'sp': 'HB', 'sb': 'ss_omega1', 'c': '.lc', 'icp': ['omega', 11], 'UZSTOP' : {2: 10.0}, 'nmx': 500000}
                 ] 
         }
 
@@ -17,7 +15,7 @@ model = {
             'rm * G1 - dm * M1',
             'rm * G2 - dm * M2',
             'rm * G3  + rm * omega * ( gt - G3I ) - dm * M3',
-            'rmI * GI - dmI * MI',
+            'rm * rmI * GI - dmI * MI',
             'rp * M1 - dp * P1 - 2 * kd * P1**2 + 2 * kud * D1',
             'rp * M2 - dp * P2 - 2 * kd * P2**2 + 2 * kud * D2',
             'rp * M3 - dp * P3 - 2 * kd * P3**2 + 2 * kud * D3',
@@ -38,9 +36,17 @@ model = {
         'par': 'rm rp dm dp delta kd kud kr kur gt omega rmI dmI rpI dpI rs ds eta ka kua pR kRd kRud kRr kRur se',
         'G1': 20.0, 'G2': 20.0, 'GI': 20.0, 'G3I': 20.0, 'G3': 20.0,
 
-        'rm': 0.0, 'rp': 6.0, 'dm': 0.198, 'dp': 0.198,
-        'delta': 0.0, 'kr': 0.720, 'kur': 54, 'kd': 1.5, 'kud': 30.0, 'gt': 20,
-        'se': 0.0, 'omega': 0.5, 'rmI': 2.5, 'dmI': 0.35, 'rpI': 6.94, 'dpI': 0.01,
-        'rs': 0.04, 'ds': 0.001, 
-        'eta': 10, 'kua': 10, 'ka': 0.1, 'kRd': 0.05, 'kRud': 1, 'kRr': 0.05, 'kRur': 10, 'pR': 100
+#         'rm': 0.0, 'rp': 6.0, 'dm': 0.198, 'dp': 0.198,
+#         'delta': 0.0, 'kr': 0.720, 'kur': 54, 'kd': 1.5, 'kud': 30.0, 'gt': 20,
+#         'se': 0.0, 'omega': 0.0, 'rmI': 2.5, 'dmI': 0.35, 'rpI': 6.94, 'dpI': 0.01,
+#         'rs': 0.04, 'ds': 0.001, 
+#         'eta': 10, 'kua': 10, 'ka': 0.1, 'kRd': 0.05, 'kRud': 1, 'kRr': 0.05, 'kRur': 10, 'pR': 100
+
+        'rm': 0.0, 'rp': 0.1, 'dm': 0.0033, 'dp': 0.0033,
+        'delta': 0.0, 'kr': 0.012, 'kur': 0.9, 'kd': 0.025, 'kud': 0.5, 'gt': 20,
+        'se': 0.0, 'omega': 0.0, 'rmI': 0.1, 'dmI': 0.0033, 'rpI': 0.1, 'dpI': 0.0033,
+        'rs': 0.0067, 'ds': 1.67e-5, 
+        'eta': 0.0067, 'kua': 0.1, 'ka': 0.05, 'kRd': 0.034, 'kRud': 0.034, 'kRr': 0.000833, 'kRur': 1.6667, 'pR': 5
+        # 'eta': 0.0067, 'kua': 1.66667, 'ka': 0.001667, 'kRd': 0.000833, 'kRud': 0.016667, 'kRr': 0.000833, 'kRur': 0.16667, 'pR': 1000
+
     }

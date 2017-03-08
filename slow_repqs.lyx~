@@ -1,0 +1,1943 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass revtex4-1
+\begin_preamble
+
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language russian
+\language_package default
+\inputencoding utf8
+\fontencoding T2A
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Roles of slow variables in dynamic of repressilator with QS feedback
+\end_layout
+
+\begin_layout Section*
+Introduction
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Основной функциональной единицей всех живых организмов является клетка.
+ Бактерии или дрожжи состоят лиш из одной клетки, в то время как млекопитающие
+ являют собой совокупность миллионов живых клеток, коллективная работа которых
+ определяет состояние живого организма.
+ Клетки живых организмов выполняют множество функций, и их работа и поведение
+ определяется в основном воздействием внешней среды, а так же генами клетки.
+ Гены регулируют выработку белков и могут воздействовать друг на друга посредств
+ом своих белковых продуктов \SpecialChar \-
+ транскрипционных факторов.
+ Совокупность генов связаных при помощи транскрипционных факторов образует
+ генетическую сеть - логическую основу клетки.
+\end_layout
+
+\begin_layout Plain Layout
+Генетическая сеть живой клетки состоит из десятков тысяч генов
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tong2004global"
+
+\end_inset
+
+, и хоть её глобальные функции \SpecialChar \-
+ питание клетки, размножение и т.д.
+ \SpecialChar \-
+ понятны, неясными остаются многие локальные механизмы функционирования
+ и механизмы отклика на воздействие внешней среды.
+ Для изучения функционирования генетической сети клетки принято разбивать
+ её на небольшие группы генов, выполняющих ту или иную функции.
+ Примером таких групп могут служить pathways \SpecialChar \-
+ наборы генов, последовательно
+ выполняющих серию операций, результатом которой служит некий продукт либо
+ функциональное изменение поведения клетки.
+ Другим важным примером являются группы генов, объединённых в подобие логических
+ схем.
+ Например - генетический триггер from 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-phag
+\begin_inset CommandInset citation
+LatexCommand cite
+key "reinitz1990theoretical,ptashne1986genetic"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Совокупность взаимодействующих генов, находящихся внутри живой клетки трудно
+ изучать из-за воздействия на них многочисленных факторов, поэтому, чтобы
+ понять принцип действия и динамическое поведение генов проще сконструировать
+ искусственную генетическую схему, поместить её в живую клетку и подвергнуть
+ серии экспериментов
+\begin_inset CommandInset citation
+LatexCommand cite
+key "elowitz2010build"
+
+\end_inset
+
+.
+ Таким образом были искустевнно сконструированы и исследованы генетический
+ триггер
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gardner2000construction"
+
+\end_inset
+
+ и генетические осцилляторы
+\begin_inset CommandInset citation
+LatexCommand cite
+key "elowitz2000synthetic,stricker2008fast"
+
+\end_inset
+
+, а так же предложены схемы элементов логической памяти, бинарных операторов
+ и сумматоров
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hasty2002engineered"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+В многоклеточном организме или колонии бактерий важную роль играет коллективная
+ работа совокупности клеток.
+ Межклеточное взаимодействие в живых организмах обычно основано на метоболитах
+ и одним из наиболее известных является кворум сенсинг.
+ Кворум сенсинг основан на двух генах: первый ген при помощи своего белкогого
+ продукта синтезирует small molecul named autoinducer; второй - синтезирует
+ рецептор, который связывается с аутоиндуктором и затем воздействует на
+ промотор третьего гена.
+ Autoinducer может свободно диффундировать сквозь клеточную мембрану во
+ внешнюю среду и обратно.
+ Описанное межклеточное взаимодействие впервые было обнаружено в биолюменисцентн
+ых бактериях
+\begin_inset CommandInset citation
+LatexCommand cite
+key "nealson1970cellular"
+
+\end_inset
+
+ и встречается так же в кишечной палочке и других бактериях
+\begin_inset CommandInset citation
+LatexCommand cite
+key "michael2001sdia,ahmer2004cell"
+
+\end_inset
+
+.
+ Quorum sensing используется бактериям для контроля плотности популяции
+ - при достижении критической концентрации аутоиндуктора клетки в колонии
+ перестают делится.
+ Quorum sensig используется учёными и при изучении искусственных генетических
+ сетей, например для синхронизации генетических осцилляторов
+\begin_inset CommandInset citation
+LatexCommand cite
+key "danino2010synchronized"
+
+\end_inset
+
+.
+ 
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Искусственные генетические сети представляют большой интерес для исследователей
+ в настоящее время.
+ Их изучение связано как с желанием управлять природой, так и понять её
+ законы
+\begin_inset CommandInset citation
+LatexCommand cite
+key "elowitz2010build"
+
+\end_inset
+
+.
+ За последние 20 лет были изучены in vivo генетические аналоги электронного
+ триггера
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gardner2000construction"
+
+\end_inset
+
+, генетические осцилляторы
+\begin_inset CommandInset citation
+LatexCommand cite
+key "elowitz2000synthetic,stricker2008fast"
+
+\end_inset
+
+ а так же предложены схемы генетических бинарных операторов и сумматоров
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hasty2002engineered"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\color black
+Динамика живой клетки в первом приближении представляет собой гармонические
+ колебания.
+ За один период таких колебаний клетка расёт, питается и делится.
+ 
+\color inherit
+Решение задачи управления размножением бактерий или роста раковых клеток
+ приводит к необходимости изучения осциляторного поведения генетических
+ сетей.
+ Первой искуссвенной генетической сетью, продемонстрировавшей колебательно
+ поведение стал репрессилятор
+\begin_inset CommandInset citation
+LatexCommand cite
+key "elowitz2000synthetic"
+
+\end_inset
+
+.
+ Репрессилятор состоит как минимум из трёх элементов - генов и их промоторов,
+ белковые продукты каждого из которых однонаправленно ингибируют транскрипцию
+ соседнего гена
+\begin_inset CommandInset citation
+LatexCommand cite
+key "muller2006generalized"
+
+\end_inset
+
+.
+ Обозначим эти элементы 
+\series bold
+a
+\series default
+, 
+\series bold
+b
+\series default
+ и 
+\series bold
+c
+\series default
+, тогда топология сети устроена следующим образом: ген 
+\series bold
+a
+\series default
+ кодирует белок, подавляющий транскрипцию с гена 
+\series bold
+b
+\series default
+, белковый продукт гена 
+\series bold
+b
+\series default
+ подавляет транскрипцию гена 
+\series bold
+c
+\series default
+, и белковый продукт гена 
+\series bold
+c
+\series default
+, замыкая цикл, подавляет транскрипцию с гена 
+\series bold
+a
+\series default
+.
+ Проще всего понять динамику репрессилятора можно представив его в виде
+ логической схемы, считая что каждый ген может находится в трёх состояниях:
+ ген полностью ингибирован; ген свободен; ген свободен и ингибирует своего
+ соседа.
+ Положим в начале 
+\series bold
+a
+\series default
+ ингибирует 
+\series bold
+b
+\series default
+, тогда ген 
+\series bold
+c
+\series default
+ свободен.
+ На следующем шаге ген 
+\series bold
+c 
+\series default
+ингибирует 
+\series bold
+a
+\series default
+ и свободен ген 
+\series bold
+b 
+\series default
+и тд.
+\end_layout
+
+\begin_layout Standard
+На настоящий момент существует довольно много попыток реализации модели
+ репрессилятора in vivo
+\begin_inset CommandInset citation
+LatexCommand cite
+key "potvin2016synchronous,chandraseelan2013effects"
+
+\end_inset
+
+ однако не все из них успешные[ссылка].
+ Отдельной важной задачей при построении любой искусственной генечической
+ сети и репрессилятора в частности является управление её динамикой.
+ Однин из простейших вариантов - изменение температуры внешней среды
+\begin_inset CommandInset citation
+LatexCommand cite
+key "chandraseelan2013effects"
+
+\end_inset
+
+ или химическое воздействие.
+ Однако в таком случае воздействию так же подвергается и живой организм,
+ содержащий синтетическую сеть.
+ Более точным и устойчивым методом контроля динамики искусственной генетической
+ сети может быть добавление обратной связи, которая в качестве звена содержит
+ какой-либо метаболит.
+ Такая обратная связь должна изменять динамику системы лишь при наличии
+ внешнего контроля метаболита а в свободном положении качественно не менять
+ динамику системы.
+ Примером такой обратной связи является кворум сенсинг.
+ Кворум сенсинг основан на двух генах: первый ген при помощи своего белкогого
+ продукта синтезирует small molecul named autoinducer; второй - синтезирует
+ рецептор, который связывается с аутоиндуктором и затем воздействует на
+ промотор третьего гена.
+ Autoinducer может свободно диффундировать сквозь клеточную мембрану во
+ внешнюю среду и обратно.
+ Описанное межклеточное взаимодействие впервые было обнаружено в биолюменисцентн
+ых бактериях
+\begin_inset CommandInset citation
+LatexCommand cite
+key "nealson1970cellular"
+
+\end_inset
+
+ и встречается так же в кишечной палочке и других бактериях
+\begin_inset CommandInset citation
+LatexCommand cite
+key "michael2001sdia,ahmer2004cell"
+
+\end_inset
+
+.
+ На настоящий момент существует ряд работ, в которых кворум сенсинг был
+ применён для синхронизации репрессиляторов в колонии бактерий[ссылка].
+\end_layout
+
+\begin_layout Standard
+Не смотря на простоту системы репрессилятора проведение эксперимента in
+ vivo осложнено тем фактом что характерный период колебаний и меет порядок
+ нескольких часов, поэтому для того чтобы отличить автоколебания от затухающих
+ требуется время порядка нескольких суток.
+ Кроме того в проведённых на данный момент экспериментах не все копии репрессиля
+тора показывали хоть какое то наличие колебаний.
+ Перечисленные проблемы помогает решить математическое моделирование.
+ 
+\end_layout
+
+\begin_layout Standard
+Основной известной моделью репрессилятора явлеятся система из 6 ОДУ, три
+ из которых описывают динамику концентраций мРНК и три - динамику белков[ссылки].
+ Такая система получается из записи полной модели (основанной на законе
+ действующих масс и описывающей концентрации мРНК, белков, транскрипционных
+ факторов и свободных генов) с последующей редукцией уравнений для быстрых
+ переменных(транскрипционных факторов-димеров и генов, свободных от воздействия
+ ТФ).
+ Однако в работе 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bennett2007transient"
+
+\end_inset
+
+ показаны отличия между полной и редуцированной моделями выражающиеся в
+ существенном различие амплитуд и периодов колебаний.
+ Кроме того в работе
+\begin_inset CommandInset citation
+LatexCommand cite
+key "potapov2015multi"
+
+\end_inset
+
+ показано, что в полной модели репрессилятора возможна субкритическая HB,
+ что может объяснять вышеупомянутые проблемы с запуском репрессилятора при
+ проведении эксперимента.
+ На моделях с редукцией быстрых переменных рассмотрены варианты репрессилятора
+ с добавленой обратной связью
+\begin_inset CommandInset citation
+LatexCommand cite
+key "potapov2011dynamics,potapov2012quorum"
+
+\end_inset
+
+, а так же репрессиляторы, связанные при помощи механизма кворум сенсинга.
+\end_layout
+
+\begin_layout Standard
+В настоящей работе сосредоточено внимание на изучение полной модели репрессилято
+ра с обратной связью и на возможностях управления репрессилятором при помощи
+ изменеии концентрации аутоиндуктора во внешней среде.
+ Продемонстрирован переход от колебаний к стационарному режиму при увеличении
+ концентрации аутоиндуктора во внешней среде.
+\end_layout
+
+\begin_layout Section
+Model
+\end_layout
+
+\begin_layout Standard
+В исследуемой системе можно выделить две составляющих части: осциллятор
+ и положительная обратная связь(Fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:repscheme"
+
+\end_inset
+
+).
+ Осциллятор состоит из трёх генов, 
+\color blue
+промоторы которых подобраны таким образом, что транскрипционный фактор-димер
+ 
+\begin_inset Formula $D_{i}$
+\end_inset
+
+, производимый геном 
+\begin_inset Formula $G_{i}$
+\end_inset
+
+ ингибирует транскрипцию гена 
+\begin_inset Formula $G_{i+1}$
+\end_inset
+
+.
+ Димер 
+\begin_inset Formula $D_{3}$
+\end_inset
+
+ ингибирует транскрипцию гена 
+\begin_inset Formula $G_{1}$
+\end_inset
+
+, замыкая последовательность реакций в кольцо.
+
+\color inherit
+ Основу обратной связи составляют гены 
+\begin_inset Formula $G_{I}\ \text{и}\ G_{3I}$
+\end_inset
+
+.
+ 
+\color blue
+Промотор гена 
+\begin_inset Formula $G_{I}$
+\end_inset
+
+ совпадает с промотором гена 
+\begin_inset Formula $G_{2}$
+\end_inset
+
+, за счёт чего активация гена 
+\begin_inset Formula $G_{I}$
+\end_inset
+
+ изменяется синхронно с геном 
+\begin_inset Formula $G_{2}$
+\end_inset
+
+ (транскрипция 
+\begin_inset Formula $G_{I}$
+\end_inset
+
+ ингибируется транскрипционным фактором 
+\begin_inset Formula $D_{1}$
+\end_inset
+
+).
+ Ген 
+\begin_inset Formula $G_{I}$
+\end_inset
+
+ посредством своего белкового продукта -- энзима
+\color inherit
+ 
+\begin_inset Formula $P_{I}$
+\end_inset
+
+ производит сигнальную молекулу 
+\begin_inset Formula $S$
+\end_inset
+
+.
+ Сигнальная молекула, объединяясь в комплекс с белком 
+\begin_inset Formula $p_{R}$
+\end_inset
+
+ 
+\series bold
+\color red
+[ref to AI-R review]
+\series default
+\color inherit
+(концентрация которого считается постоянной), 
+\color blue
+активирует транскрипцию
+\color inherit
+ гена 
+\begin_inset Formula $G_{3I}$
+\end_inset
+
+.
+ 
+\color green
+Кодирующая последовательность
+\color blue
+ гена 
+\begin_inset Formula $G_{3I}$
+\end_inset
+
+ совпадает с таковой у гена 
+\begin_inset Formula $G_{3}$
+\end_inset
+
+, поэтому ген 
+\begin_inset Formula $G_{3I}$
+\end_inset
+
+ производит такую же мРНК 
+\begin_inset Formula $M_{3}$
+\end_inset
+
+, замыкая обратную связь.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename scheme/repDimSol_qs__05282000.png
+	lyxscale 10
+	width 60line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Схема репрессилятора с обратной связью
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:repscheme"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Математическая модель схемы строится на основе закона действующих масс,
+ при этом реакции транскрипции, трансляции, диффузии и производства сигнальной
+ молекулы считаются линейными.
+ Нелинейными же являются процессы димеризации, 
+\color blue
+посадки ТФ на промотор и объединения молекулы 
+\begin_inset Formula $S$
+\end_inset
+
+
+\color inherit
+ с белком в комплекс.
+ В уравнении 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cmM3"
+
+\end_inset
+
+ введён искусственный параметр 
+\begin_inset Formula $\omega$
+\end_inset
+
+ который описывает отношение между скоростями транскрипций генов 
+\begin_inset Formula $G_{3}$
+\end_inset
+
+ и 
+\begin_inset Formula $G_{3I}$
+\end_inset
+
+.
+ 
+\color green
+(Нужны дополнительные пояснения про 
+\begin_inset Formula $\omega$
+\end_inset
+
+?) 
+\color black
+В уравнении 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cmMI"
+
+\end_inset
+
+так же введен параметр 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ определяющий, во сколько раз транскрипция гена 
+\begin_inset Formula $G_{I}$
+\end_inset
+
+ отличается от остальных.
+\end_layout
+
+\begin_layout Standard
+Как было отмечено выше, одним из звеньев обратной связи является сигнальная
+ молекула, которая может свободно диффундировать через клеточную мембрану
+ во внешнюю среду.
+ Концентрация сигнальной молекулы в среде влияет на динамику системы (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cmS"
+
+\end_inset
+
+) и при проведении эксперимента может легко контролироваться либо добавлением
+ самой молекулы, либо добавлением ферментов, её расщепляющих.
+ Таким образом рассматриваемая обратная связь может использоваться, как
+ для синхронизации нескольких осцилляторов, так и управления их динамикой.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="17" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Parameter
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Default value
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Description
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $d_{m}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0033
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+деградация мРНК
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $d_{p}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0033
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+деградация белка
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\delta$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+деградация димера
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $r_{p}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+скорость трансляции
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $k_{r},\ k_{ur}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.012, 0.9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+связывание ТФ и оператором
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $k_{d},\ k_{ud}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.025, 0.5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+связывание белков
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $g_{t}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+20
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+число генов одного типа
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\omega$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+воздействие обратной связи (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cmM3"
+
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $r_{mI}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.1\cdot r_{m}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+скорость транскрипции гена 
+\begin_inset Formula $G_{I}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $r_{s}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0067
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+скорость производства AI
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $d_{s}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.67e-05
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+деградация сигнальной молекулы
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\eta$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0067
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+диффузия сигнальной молекулы
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $k_{a},\ k_{ua}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.16667, 0.000833
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+связывание AI с R-белком
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $p_{R}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+50
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+концентрация R-белка
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $k_{Rd},\ k_{Rud}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.016667, 0.000833
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+димеризация комплекса AI-R
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $k_{Rr},\ k_{Rur}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.000833, 1.6667
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+связывание ТФ AI-R с оператором 
+\begin_inset Formula $G_{3I}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Значения параметров, определяющих динамику системы.
+ Параметры, приведеные в таблице используются в всех графиках настоящей
+ статьи, за исключеним графиков для которых некоторые параметры явно указаны.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Results
+\end_layout
+
+\begin_layout Standard
+Основным вопросом настоящей работы является возможность управления рассматриваем
+ой системой путём изменения концентрации сигнальной молекулы во внешней
+ среде.
+ В начале предположим , что при проведении эксперимента, объем, в котором
+ находится клетка или бактерия достаточно велик.
+ Тогда концентрацию сигнальной молекулы во внешней среде можно считать постоянно
+й и равной нулю.
+\end_layout
+
+\begin_layout Standard
+При отсутствии воздействия обратной связи 
+\begin_inset Formula $(\omega=0)$
+\end_inset
+
+ основным управляющим параметром в системе является скорость транскрипции
+ 
+\begin_inset Formula $r_{m}$
+\end_inset
+
+.
+ При малых значениях скорости транскрипции 
+\begin_inset Formula $(r_{m}<0.004)$
+\end_inset
+
+ система находится в устойчивом стационарном состоянии, при больших значениях
+ - в системе наблюдаются периодические автоколебания(Fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:repqsomega0"
+
+\end_inset
+
+).
+ Рождение колебаний может происходить по двум сценариям[ссылка на нашу статью
+ в интерфейсе].
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename auto/fig/fig_1/fig1a.png
+	lyxscale 30
+	width 70col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Переход от стационарного состояния к колебаниям через субкритическую бифуркацию
+ Андронова-Хопфа при увеличении скорости транскрипции 
+\begin_inset Formula $r_{m}$
+\end_inset
+
+, в случае отсутствия воздействия обратной связи на систему
+\begin_inset Formula $(\omega=0)$
+\end_inset
+
+.
+ Так же возможен вариант рождения колебаний чере supercritical AHB[ссылка
+ на статью где описан такой переход].
+ Здесь и далее тонкая линия обозначает стационарное состояние, непрерывная
+ - устойчивое, штриховая - неустойчивое.
+ Толстая линия - предельный цикл, непрерывная - устийчивый, штриховая -
+ устойчивый.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:repqsomega0"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Включение обратной связи 
+\begin_inset Formula $(\omega>0)$
+\end_inset
+
+ меняет параметрический портрет системы.
+ С ростом скорости транскрипции растёт сила воздействия обратной связи на
+ основные гены.
+ Вместе с этим ген 
+\begin_inset Formula $G_{1}$
+\end_inset
+
+ одновременно повышает и снижает выработку мРНК 
+\begin_inset Formula $M_{3}$
+\end_inset
+
+ - ингибируя ген 
+\begin_inset Formula $G_{2}$
+\end_inset
+
+, который ингибирует 
+\begin_inset Formula $G_{3}$
+\end_inset
+
+ или ингибируя 
+\begin_inset Formula $G_{I}$
+\end_inset
+
+ который активирует 
+\begin_inset Formula $G_{3I}$
+\end_inset
+
+.
+ Для понимания качественных изменений поведения, вызваных обратной связью,
+ рассмотрим предельный случай больших 
+\begin_inset Formula $\omega$
+\end_inset
+
+.
+ В это случае ген 
+\begin_inset Formula $G_{3I}$
+\end_inset
+
+ производит много больше мРНК чем 
+\begin_inset Formula $G_{3}$
+\end_inset
+
+ что означает что цепочу 
+\begin_inset Formula $G_{2}$
+\end_inset
+
+, 
+\begin_inset Formula $G_{3}$
+\end_inset
+
+ можно выкинуть из рассмотрения.
+ Тогда получим схему 
+\begin_inset Formula $G_{1}\dashv G_{I}\rightarrow G_{3I}\dashv G_{1}$
+\end_inset
+
+, которая фактически эквивалентна саморегулирующемуся гену, находящемуся
+ в стационарном состоянии.
+ При этом доминирующее положение занимает ген 
+\begin_inset Formula $G_{2}$
+\end_inset
+
+ (Fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:repqsomega1genes"
+
+\end_inset
+
+), за счёт того что его репрессор - ген 
+\begin_inset Formula $G_{1}$
+\end_inset
+
+ - полностью ингибируется геном 
+\begin_inset Formula $G_{3I}$
+\end_inset
+
+.
+ Такой переход можно наблюдать при 
+\begin_inset Formula $\omega\sim1$
+\end_inset
+
+, увеличивая скорость транскрипции в системе, в этом случае при малых 
+\begin_inset Formula $r_{m}$
+\end_inset
+
+ в системе сначала рождаются колебания, затем при дальнейшем увеличении
+ 
+\begin_inset Formula $r_{m}$
+\end_inset
+
+ на динамику начинает оказывать воздействие обратная связь и ситема переходит
+ в стационарное состояние(Fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:repqsrmomega1"
+
+\end_inset
+
+).
+ Аналогичный переход можно наблюдать, если зафиксировать значение 
+\begin_inset Formula $r_{m}=0.01$
+\end_inset
+
+, когда единственным аттрактором в системе является устойчивый предельный
+ цикл и начать увеличивать 
+\begin_inset Formula $\omega$
+\end_inset
+
+ начиная с нуля
+\begin_inset space ~
+\end_inset
+
+(Fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:repqsOmega"
+
+\end_inset
+
+).
+ Переход между колебательным и стационарным режимами происходит через гомоклинич
+ескую бифуркацию.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename auto/fig/fig_1/fig1c.png
+	lyxscale 30
+	width 70col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Распределение концентраций генов, свободных от действующих на них ТФ.
+ При работающей обратной связи
+\begin_inset Formula $(\omega=1,r_{m}>0.01)$
+\end_inset
+
+ в системе доминирует ген 
+\begin_inset Formula $G_{2}$
+\end_inset
+
+ (синяя линия) и полностью подавляется работа генов 
+\begin_inset Formula $G_{2}$
+\end_inset
+
+ и 
+\begin_inset Formula $G_{3}$
+\end_inset
+
+.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:repqsomega1genes"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename auto/fig/fig_1/fig1b.png
+	lyxscale 30
+	width 70col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Переход от колебаниям к устойчивому стационарному состоянию, вследствии
+ воздействия обратной связи, 
+\begin_inset Formula $\omega=0$
+\end_inset
+
+.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:repqsrmomega1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename auto/fig/fig_2/fig2.png
+	lyxscale 30
+	width 70col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Переход от колебаний к устойчивому стационарному состоянию при увеличении
+ 
+\begin_inset Formula $\omega$
+\end_inset
+
+.
+ 
+\begin_inset Formula $r_{m}=$
+\end_inset
+
+0.01.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:repqsOmega"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Рассмотрим теперь случай малых 
+\begin_inset Formula $\omega$
+\end_inset
+
+ когда влияние обратной связи ещё незаметно при разумных значениях скорости
+ транскрипции и попробуем управлять динамикой, варьируя параметр 
+\begin_inset Formula $S_{e}$
+\end_inset
+
+ (физически этот параметр проще всего контролировать).
+ Обратившись к схеме Fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:repscheme"
+
+\end_inset
+
+ можно видеть, что концентрация молекулы аутоиндуктора внутри клетки определяет
+ транскрипцию гена гена 
+\begin_inset Formula $G_{3I}$
+\end_inset
+
+ и тем самым меняет воздействие обратной связи.
+ Как видно из уравнения 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "cmS"
+
+\end_inset
+
+, диффузия молекулы аутоиндуктора зависит от его концентраций в клетке 
+\begin_inset Formula $s$
+\end_inset
+
+ и во внешней среде 
+\begin_inset Formula $S_{e}$
+\end_inset
+
+ и происходит в ту сторону, где концентрация меньше.
+ Это означает что повысив концентрацию аутоиндуктора во внешней среде мы
+ повысим её и в клетке, и тем самым усилим действие обратной связи.
+ В этом случай произойдёт описаный ранее переход от колебаний к стационарному
+ состоянию, с работающими генами 
+\begin_inset Formula $G_{2,}G_{3I}$
+\end_inset
+
+ и полностью репрессированными 
+\begin_inset Formula $G_{1},G_{3}$
+\end_inset
+
+ (Fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:repqsSe"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename auto/fig/fig_3/fig3.png
+	lyxscale 30
+	width 70col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Переход от колебаний к устойчивому стационарному состоянию при повышении
+ концентрации аутоиндуктора во внешней среде
+\begin_inset Formula $(\omega=0.5,r_{m}=0.01)$
+\end_inset
+
+.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:repqsSe"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Discussion
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "slow_repqs"
+options "ieeetr"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part*
+Appendix 1
+\end_layout
+
+\begin_layout Wide Text
+\begin_inset Formula 
+\begin{align}
+\frac{dM_{1}}{dt} & =r_{m}G_{1}-d_{m}M_{1}\label{cmM1}\\
+\frac{dM_{2}}{dt} & =r_{m}G_{2}-d_{m}M_{2}\label{cmM2}\\
+\frac{dM_{3}}{dt} & =r_{m}\left(G_{3}+\omega(g_{t}-G_{3I})\right)-d_{m}M_{3}\label{cmM3}\\
+\frac{dM_{I}}{dt} & =r_{m}^{I}G_{I}-d_{m}M_{I}\label{cmMI}\\
+\notag\\
+\frac{dP_{1}}{dt} & =r_{p}M_{1}+2k_{ud}D_{1}-2k_{d}P_{1}^{2}-d_{p}P_{1}\label{cmP1}\\
+\frac{dP_{2}}{dt} & =r_{p}M_{2}+2k_{ud}D_{2}-2k_{d}P_{2}^{2}-d_{p}P_{2}\label{cmP2}\\
+\frac{dP_{3}}{dt} & =r_{p}M_{3}+2k_{ud}D_{3}-2k_{d}P_{3}^{2}-d_{p}P_{3}\label{cmP3}\\
+\frac{dP_{I}}{dt} & =r_{p}M_{I}-d_{p}P_{I}\label{cmPI}\\
+\notag\\
+\frac{dS}{dt} & =r_{s}P_{I}-(d_{s}+\eta)S+k_{ua}R-k_{a}p_{R}S\label{cmS}\\
+\frac{dR}{dt} & =-k_{ua}R+k_{a}p_{R}S-2k_{Rd}R^{2}+2k_{Rud}D_{R}\label{cmR}\\
+\notag
+\end{align}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align}
+\frac{dD_{1}}{dt} & =k_{d}P_{1}^{2}-k_{ud}D_{1}-k_{r}D_{1}G_{2}+k_{ur}(g_{t}-G_{2})-k_{r}D_{1}G_{I}+k_{ur}(g_{t}-G_{I})-\delta d_{p}D_{1}\label{cmD1}\\
+\frac{dD_{2}}{dt} & =k_{d}P_{2}^{2}-k_{ud}D_{2}-k_{r}D_{2}G_{3}+k_{ur}(g_{t}-G_{3})-\delta d_{p}D_{2}\label{cmD2}\\
+\frac{dD_{3}}{dt} & =k_{d}P_{3}^{2}-k_{ud}D_{3}-k_{r}D_{3}G_{1}+k_{ur}(g_{t}-G_{1})-\delta d_{p}D_{3}\label{cmD3}\\
+\frac{dD_{R}}{dt} & =k_{Rd}R^{2}-k_{Rud}D_{R}-k_{Rr}G_{3I}D_{aiR}+k_{Rur}(g_{t}-G_{3I})-\delta d_{p}D_{R}\label{cmDR}\\
+\notag\\
+\frac{dG_{1}}{dt} & =-k_{r}G_{1}D_{3}+k_{ur}(g_{t}-G_{1})\label{cmG1}\\
+\frac{dG_{2}}{dt} & =-k_{r}G_{2}D_{1}+k_{ur}(g_{t}-G_{2})\label{cmG2}\\
+\frac{dG_{I}}{dt} & =-k_{r}G_{I}D_{1}+k_{ur}(g_{t}-G_{I})\label{cmGI}\\
+\frac{dG_{3}}{dt} & =-k_{r}G_{3}D_{2}+k_{ur}(g_{t}-G_{3})\label{cmG3}\\
+\frac{dG_{3I}}{dt} & =-k_{Rr}G_{3I}D_{R}+k_{Rur}(g_{t}-G_{3I})\label{cmG3I}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
